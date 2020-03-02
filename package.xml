@@ -1,10 +1,14 @@
 <package format="2">
-  <name>cpu_monitor</name>
+  <name>system_monitor</name>
   <version>0.0.0</version>
-  <description>cpu_monitor</description>
+  <description>system_monitor</description>
   <author email="alex@alex.com">Alex Spitzer</author>
+  <author email="afn@blue-ocean-robotics.com">Alex Fernandes Neves</author>
   <maintainer email="alex@alex.com">Alex Spitzer</maintainer>
+  <maintainer email="afn@blue-ocean-robotics.com">Alex Fernandes Neves</maintainer>
   <license>MIT</license>
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
   <exec_depend>python-psutil</exec_depend>
 </package>

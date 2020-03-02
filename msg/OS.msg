@@ -1,0 +1,9 @@
+float32 cpu
+uint64 memory_available
+uint64 memory_used
+uint64 memory_free
+uint64 memory_active
+uint64 memory_inactive
+uint64 memory_buffers
+uint64 memory_cached
+float64 temperature
