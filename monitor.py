@@ -22,10 +22,10 @@ def ns_join(*names):
 
 
 class Process:
-    def __init__(self, name, pid, monitor_node_name):
+    def __init__(self, name, pid):
         self.name = name
         self.proc = psutil.Process(pid)
-        self.pub_process = rospy.Publisher(ns_join(monitor_node_name, "nodes",
+        self.pub_process = rospy.Publisher(ns_join("nodes",
                                            name[1:]), ProcessMsg,
                                            queue_size=20)
 
@@ -54,8 +54,7 @@ if __name__ == "__main__":
     node_map = {}
     ignored_nodes = set()
 
-    pub_os = rospy.Publisher(node_name + "/os", OSMsg,
-                             queue_size=20)
+    pub_os = rospy.Publisher("os", OSMsg, queue_size=20)
 
     while not rospy.is_shutdown():
         for node in rosnode.get_node_names():
@@ -84,7 +83,7 @@ if __name__ == "__main__":
                 rospy.logerr("[system monitor] failed to get"
                              "pid of node %s (api is %s)" % (node, node_api))
             else:
-                node_map[node] = Process(node, resp[2], node_name)
+                node_map[node] = Process(node, resp[2])
                 rospy.loginfo("[system monitor] adding new node %s" % node)
 
         for node_name, node in list(node_map.items()):
